@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aqib Naveed Khan, mechanical engineer: maintenance, renewable energy and sustainability. Based in Forlì, Italy.">
+<meta name="theme-color" content="#0b111b">
+<title>Aqib Naveed Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+/* Layout: dark navy long page. Hero with live network canvas on a faint drafting grid, stat strip,
+   two-column about with profile card, tabbed timeline, project cards with a detail sheet, a capacity-scale panel,
+   credentials grid, skills columns and a closing contact band. EN/IT switch in the nav. */
+:root {
+  --bg: #0b111b;
+  --bg2: #101826;
+  --card: #131c2b;
+  --line: #22304a;
+  --fg: #e8edf5;
+  --mute: #93a1b8;
+  --accent: #ffb454;
+  --accent-ink: #2a1600;
+  --cool: #6ea8ff;
+  --ok: #3ddc97;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f6fa; --bg2: #e9eef6; --card: #ffffff; --line: #d2dae7;
+    --fg: #0f1a2b; --mute: #55657e; --accent: #b45f06; --accent-ink: #ffffff; --cool: #2b62c9; --ok: #12875a;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f6fa; --bg2: #e9eef6; --card: #ffffff; --line: #d2dae7;
+  --fg: #0f1a2b; --mute: #55657e; --accent: #b45f06; --accent-ink: #ffffff; --cool: #2b62c9; --ok: #12875a;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg);
+  font: 400 16px/1.65 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0; overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, p, ul { margin: 0; }
+h1, h2, h3 { text-wrap: balance; font-weight: 400; }
+ul { padding: 0; list-style: none; }
+.wrap { max-width: 1160px; margin: 0 auto; }
+.mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+em { font-style: italic; color: var(--accent); }
+sub { font-size: .42em; letter-spacing: 0; margin-left: 6px; color: var(--mute); vertical-align: baseline; font-family: var(--font-body); font-weight: 600; }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 14px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.logo b { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 28px; color: var(--accent); }
+.logo span { font-size: 12px; line-height: 1.2; letter-spacing: .02em; }
+.logo small { display: block; font-family: var(--font-mono); font-weight: 400; color: var(--mute); font-size: 10px; letter-spacing: .1em; }
+.links { display: flex; gap: 22px; margin-left: auto; font-size: 14px; color: var(--mute); }
+.links a:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; font: 600 14px var(--font-body); border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; transition: transform .2s, border-color .2s; }
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.solid { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.sm { padding: 8px 16px; font-size: 13px; }
+.icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; font-size: 16px; }
+.icon-btn:hover { border-color: var(--accent); }
+.langsw { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.langsw button { border: 0; background: transparent; color: var(--mute); font: 600 12px var(--font-mono); letter-spacing: .06em; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+.langsw button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+@media (max-width: 960px) { .links { display: none; } .nav .wrap { justify-content: space-between; } .langsw { margin-left: auto; } }
+@media (max-width: 480px) { .logo span { display: none; } .nav .wrap .btn { padding: 9px 14px; } }
+
+/* hero */
+.hero { position: relative; padding-block: 72px 56px; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); z-index: -2;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px; opacity: .35; -webkit-mask-image: radial-gradient(ellipse at 40% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at 40% 40%, #000 20%, transparent 75%); }
+#net { position: absolute; inset: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); width: calc(100% + 2 * max(16px, env(safe-area-inset-left, 0px))); height: 100%; z-index: -1; opacity: .7; }
+.hero-grid { display: grid; grid-template-columns: 1.4fr .9fr; gap: 40px; align-items: center; }
+.eyebrow { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 26px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(46px, 8vw, 108px); line-height: .98; letter-spacing: -.01em; }
+.lead { max-width: 56ch; margin-top: 26px; font-size: 18px; color: var(--mute); }
+.lead b { color: var(--fg); font-weight: 600; }
+.elig { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 8px 16px 8px 12px; border: 1px solid color-mix(in srgb, var(--ok) 55%, var(--line)); border-radius: 999px; font-size: 14px; font-weight: 600; background: color-mix(in srgb, var(--ok) 10%, transparent); }
+.elig i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.connect { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 28px; }
+.connect a { font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.connect a:hover { border-color: var(--accent); }
+.tagline { margin-top: 34px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; color: var(--mute); }
+.mono-card { justify-self: center; position: relative; width: min(290px, 100%); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 20%, var(--bg2)), var(--bg2) 70%); border: 1px solid var(--line); }
+.mono-card::before, .mono-card::after { content: ""; position: absolute; border-radius: 50%; border: 1px dashed var(--line); }
+.mono-card::before { inset: -22px; animation: spin 40s linear infinite; }
+.mono-card::after { inset: -48px; border-style: solid; opacity: .5; }
+.mono-card span { font-family: var(--font-display); font-style: italic; font-size: 108px; color: var(--accent); line-height: 1; }
+.mono-card i { position: absolute; width: 10px; height: 10px; background: var(--cool); border-radius: 50%; top: -27px; left: 50%; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .mono-card { width: 170px; order: -1; justify-self: start; margin: 30px 0 10px 30px; } .mono-card span { font-size: 62px; } }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+.stat { padding: 28px 20px 28px 0; min-width: 0; }
+.stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+.stat b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 4vw, 52px); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.stat span { display: block; margin-top: 4px; font-size: 13px; color: var(--mute); max-width: 26ch; }
+@media (max-width: 760px) { .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(3) { border-left: 0; padding-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* sections */
+section { padding-block: 96px 0; }
+.sec-head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 760px; }
+.sec-head h2 { font-family: var(--font-display); font-size: clamp(36px, 5.4vw, 68px); line-height: 1.04; }
+.sec-head p { color: var(--mute); font-size: 17px; max-width: 58ch; }
+.kicker { display: flex; gap: 14px; align-items: center; }
+.kicker::before { content: ""; width: 28px; height: 1px; background: var(--accent); flex: none; }
+
+/* about */
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+.about-grid .txt { display: grid; gap: 18px; color: var(--mute); font-size: 17px; align-content: start; }
+.about-grid .txt b { color: var(--fg); font-weight: 600; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-family: var(--font-mono); letter-spacing: .04em; color: var(--mute); }
+.profile { border: 1px solid var(--line); border-radius: 22px; background: var(--card); padding: 26px; display: grid; gap: 18px; align-content: start; }
+.profile .mk { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 22%, var(--bg2)), var(--bg2) 70%); border: 1px solid var(--line); font-family: var(--font-display); font-style: italic; font-size: 38px; color: var(--accent); }
+.profile h3 { font-family: var(--font-display); font-size: 32px; line-height: 1.1; }
+.profile .role { color: var(--mute); font-size: 14px; margin-top: 2px; }
+.profile dl { margin: 0; display: grid; gap: 0; }
+.profile dl > div { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.profile dt { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); padding-top: 3px; }
+.profile dd { margin: 0; min-width: 0; }
+@media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+/* journey */
+.tabs { display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; gap: 4px; margin-bottom: 36px; }
+.tab { border: 0; background: transparent; color: var(--mute); font: 600 13px var(--font-body); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.tab small { font-family: var(--font-mono); margin-left: 6px; opacity: .8; }
+.entry { display: grid; grid-template-columns: 170px 1fr; gap: 28px; padding: 30px 0; border-top: 1px solid var(--line); }
+.entry:last-child { border-bottom: 1px solid var(--line); }
+.entry .when { font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+.entry .when small { display: block; color: var(--mute); margin-top: 4px; letter-spacing: .08em; font-size: 11px; text-transform: uppercase; }
+.entry h3 { font-family: var(--font-display); font-size: 30px; line-height: 1.12; }
+.entry .org { margin: 6px 0 12px; font-weight: 600; font-size: 14px; }
+.entry .org span { color: var(--mute); font-weight: 400; }
+.entry p { color: var(--mute); max-width: 68ch; }
+.entry ul { display: grid; gap: 8px; max-width: 72ch; color: var(--mute); }
+.entry li { position: relative; padding-left: 22px; }
+.entry li::before { content: ""; position: absolute; left: 0; top: .8em; width: 11px; height: 1px; background: var(--accent); }
+.entry .pills { margin-top: 16px; }
+.badge { display: inline-block; margin-left: 10px; vertical-align: middle; font: 500 10px var(--font-mono); letter-spacing: .1em; padding: 3px 8px; border-radius: 4px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); text-transform: uppercase; }
+@media (max-width: 700px) { .entry { grid-template-columns: 1fr; gap: 10px; } }
+
+/* projects */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.card { text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 0; overflow: hidden; cursor: pointer; color: inherit; font: inherit; display: flex; flex-direction: column; min-width: 0; transition: transform .25s, border-color .25s; }
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.art { aspect-ratio: 16/8; width: 100%; display: block; background: var(--bg2); }
+.card .body { padding: 22px 24px 26px; display: grid; gap: 10px; }
+.card h3 { font-family: var(--font-display); font-size: 30px; line-height: 1.12; }
+.card p { font-size: 15px; color: var(--mute); }
+.card .meta { display: flex; justify-content: space-between; gap: 10px; }
+.card .open { color: var(--accent); font-weight: 600; font-size: 14px; }
+
+/* three countries */
+.route { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; padding-top: 30px; }
+.route::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 13px); opacity: .6; }
+.stop { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 26px 26px 28px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.stop .dot { position: absolute; top: -30px; left: 26px; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent); }
+.stop .country { font-family: var(--font-display); font-style: italic; font-size: 44px; line-height: 1; color: var(--accent); }
+.stop h3 { font-family: var(--font-display); font-size: 26px; line-height: 1.15; margin-top: 6px; }
+.stop .sch { font-weight: 600; font-size: 14px; }
+.stop p { color: var(--mute); font-size: 15px; }
+.stop .tag { font: 500 11px var(--font-mono); letter-spacing: .1em; color: var(--accent); text-transform: uppercase; margin-top: 4px; }
+@media (max-width: 860px) { .route { grid-template-columns: 1fr; padding-top: 0; } .route::before { display: none; } .stop .dot { position: static; } }
+.grade { display: inline-block; margin-top: 16px; padding: 5px 12px; border: 1px solid var(--accent); border-radius: 6px; color: var(--accent); font: 500 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+
+/* credentials */
+.awards { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.award { padding: 26px 24px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; min-width: 0; }
+.award .y { display: flex; justify-content: space-between; gap: 8px; font: 12px var(--font-mono); color: var(--mute); letter-spacing: .06em; }
+.award h3 { font-family: var(--font-display); font-size: 26px; line-height: 1.15; }
+.award p { font-size: 14px; color: var(--mute); }
+.award .tag { font: 500 11px var(--font-mono); letter-spacing: .1em; color: var(--accent); text-transform: uppercase; }
+@media (max-width: 1000px) { .awards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .awards { grid-template-columns: 1fr; } }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 28px; }
+.skills h3 { font-family: var(--font-display); font-size: 26px; line-height: 1.15; margin: 10px 0 16px; }
+@media (max-width: 1000px) { .skills { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
+
+/* contact */
+.contact { margin-top: 110px; padding: 80px 0 56px; border-top: 1px solid var(--line); display: grid; gap: 26px; justify-items: start; }
+.contact h2 { font-family: var(--font-display); font-size: clamp(44px, 8vw, 104px); line-height: .98; max-width: 14ch; }
+.contact p { color: var(--mute); max-width: 54ch; font-size: 17px; }
+.reach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 40px; font-family: var(--font-mono); font-size: 14px; color: var(--mute); width: 100%; max-width: 640px; }
+.reach code { color: var(--fg); font: inherit; user-select: all; overflow-wrap: anywhere; display: block; margin-top: 4px; }
+@media (max-width: 560px) { .reach { grid-template-columns: 1fr; } }
+footer { border-top: 1px solid var(--line); padding-block: 26px 36px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; font-size: 12px; color: var(--mute); }
+footer a:hover { color: var(--accent); }
+
+/* modal */
+.overlay { position: fixed; inset: 0; z-index: 80; background: color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter: blur(8px); display: grid; place-items: center; padding: 20px; }
+.sheet { width: min(740px, 100%); max-height: 88vh; overflow: auto; background: var(--card); border: 1px solid var(--line); border-radius: 22px; }
+.sheet .in { padding: 26px 30px 34px; display: grid; gap: 16px; }
+.sheet h2 { font-family: var(--font-display); font-size: 38px; line-height: 1.08; }
+.sheet ul { display: grid; gap: 10px; color: var(--mute); }
+.sheet li { position: relative; padding-left: 22px; }
+.sheet li::before { content: ""; position: absolute; left: 0; top: .8em; width: 11px; height: 1px; background: var(--accent); }
+.sheet .top { display: flex; justify-content: space-between; align-items: center; }
+.sheet .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-top: 16px; border-top: 1px solid var(--line); }
+.sheet .facts b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.1; }
+.sheet .facts span { display: block; margin-top: 4px; text-transform: none; letter-spacing: 0; font-size: 12px; }
+@media (max-width: 520px) { .sheet .facts { grid-template-columns: 1fr; } .sheet .in { padding: 22px 20px 28px; } }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none; transition: .3s; z-index: 90; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Home"><b>AK.</b><span>AQIB NAVEED KHAN<small data-i="logo">MECHANICAL × MAINTENANCE × SUSTAINABLE</small></span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about" data-i="n1">About</a><a href="#journey" data-i="n2">Journey</a><a href="#projects" data-i="n3">Projects</a><a href="#credentials" data-i="n4">Credentials</a><a href="#skills" data-i="n5">Skills</a>
+    </nav>
+    <div class="langsw" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="it" aria-pressed="false">IT</button></div>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme" title="Switch colour theme">☼</button>
+    <a class="btn solid sm" href="#contact" data-i="cta0">Get in touch ↗</a>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero" id="home">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i="eb1">Mechanical engineer · Maintenance · Renewable energy · Sustainability</span><span data-i="eb2">Reliability is measurable · 001 / ∞</span></div>
+    <div class="hero-grid">
+      <div>
+        <h1 data-i="h1">Reliable machines. <em>Clean</em> energy. Better design.</h1>
+        <p class="lead" data-i="lead">I'm <b>Aqib Naveed Khan</b>, a mechanical engineer with hands-on experience in <b>maintenance and reliability</b>, <b>renewable energy commissioning</b> and <b>team leadership</b>. I've studied in <b>Pakistan, Turkey and Italy</b> and I'm now completing an MSc in <b>Mechanical Engineering for Sustainability</b> at the University of Bologna, adding <b>CAD design (SOLIDWORKS CSWP)</b>, <b>data analysis</b> and <b>predictive maintenance</b> to my site experience.</p>
+        <div class="elig"><i></i><span data-i="elig">Eligible to work in Italy</span></div>
+        <div class="cta">
+          <a class="btn solid" href="#projects" data-i="cta1">See my projects ↗</a>
+          <a class="btn" href="#journey" data-i="cta2">Jump to experience ↗</a>
+        </div>
+        <div class="connect mono"><span data-i="conn">Connect /</span><a href="https://www.linkedin.com/in/aqib-naveed" rel="noopener">LinkedIn ↗</a><a href="#contact" data-i="mail">Email ↗</a><span>Forlì, Italy</span></div>
+        <div class="tagline" data-i="tag">HANDS-ON EXPERIENCE.<br>SUSTAINABLE THINKING.</div>
+      </div>
+      <div class="mono-card" aria-hidden="true"><i></i><span>AK.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats" aria-label="Highlights">
+    <div class="stat"><b data-i="s1v">58.3<sub>MW</sub></b><span data-i="s1l">Total capacity of the engine plant I maintained: 11 Niigata engines of 5.3 MW each</span></div>
+    <div class="stat"><b data-i="s2v">2.4<sub>MW</sub></b><span data-i="s2l">Solar plant erected and commissioned within the deadline</span></div>
+    <div class="stat"><b data-i="s3v">3<sub>years</sub></b><span data-i="s3l">Hands-on as Maintenance Engineer, 2022 to 2025</span></div>
+    <div class="stat"><b data-i="s4v">3<sub>countries</sub></b><span data-i="s4l">Studied in Pakistan, Turkey and Italy</span></div>
+  </div>
+</div>
+
+<section id="about"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="a_k">About me · The engineer behind the work</div><h2 data-i="a_h">Reliability isn't luck. It's a <em>routine</em>.</h2></div>
+  <div class="about-grid">
+    <div class="txt">
+      <p data-i="a_p1">I work across maintenance, renewable energy and mechanical design: keeping machinery reliable, bringing new plants into service, and using data to plan better work.</p>
+      <p data-i="a_p2">My path spans maintenance of a 58.3 MW power plant at <b>Ibrahim Fibres Limited</b>, the commissioning of a <b>2.4 MW solar plant</b>, and an MSc in <b>Mechanical Engineering for Sustainability</b> at the <b>University of Bologna</b>, after a BSc in Pakistan and an exchange year in Turkey.</p>
+      <p data-i="a_p3">I'm looking for a role in Italy where I can combine that site experience with my current training. I'm eligible to work in Italy and I'm actively improving my Italian.</p>
+      <div class="pills"><span class="pill" data-i="pl1">Plant maintenance</span><span class="pill" data-i="pl2">Commissioning</span><span class="pill" data-i="pl3">Predictive maintenance</span></div>
+      <a class="btn" style="width:fit-content" href="#journey" data-i="a_btn">Explore my journey ↗</a>
+    </div>
+    <aside class="profile">
+      <div class="mk" aria-hidden="true">AK.</div>
+      <div><h3>Aqib Naveed Khan</h3><p class="role" data-i="pc_role">Mechanical Engineer</p></div>
+      <dl>
+        <div><dt data-i="pc_b">Based in</dt><dd>Forlì, Italy</dd></div>
+        <div><dt data-i="pc_s">Studying</dt><dd data-i="pc_sv">MSc, University of Bologna</dd></div>
+        <div><dt data-i="pc_w">Work</dt><dd data-i="pc_wv">Eligible to work in Italy</dd></div>
+        <div><dt data-i="pc_l">Languages</dt><dd data-i="pc_lv">English (IELTS 8.0) · Italian (A2)</dd></div>
+      </dl>
+    </aside>
+  </div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="j_k">The journey · Pakistan, Turkey, Italy</div><h2 data-i="j_h">Hands-on first. <em>Sustainable</em> next.</h2><p data-i="j_p">Site experience, certified skills and a master's in Mechanical Engineering for Sustainability.</p></div>
+  <div class="tabs" role="tablist" aria-label="Journey">
+    <button class="tab" role="tab" aria-selected="true" data-tab="edu"><span data-i="tb_edu">Education</span><small id="n-edu"></small></button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="exp"><span data-i="tb_exp">Experience</span><small id="n-exp"></small></button>
+  </div>
+  <div id="timeline" role="tabpanel"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="p_k">Work archive · Click a project to explore</div><h2 data-i="p_h">Projects built <em>on site</em>.</h2><p data-i="p_p">Two projects from site work: a new solar plant and an engine upgrade.</p></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="countries"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="ctr_k">Education · Pakistan, Turkey, Italy</div><h2 data-i="ctr_h">Educated across <em>three</em> countries.</h2><p data-i="ctr_p">A BSc in Pakistan, an exchange year in Turkey and an MSc in Italy gave me a broad technical base and practice at adapting quickly to new academic and working environments.</p></div>
+  <div class="route" id="route"></div>
+</div></section>
+
+<section id="credentials"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="c_k">Credentials · Certifications and languages</div><h2 data-i="c_h">Certified in 3D design. Working in <em>two</em> languages.</h2></div>
+  <div class="awards" id="awardGrid"></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="sec-head"><div class="kicker mono" data-i="k_k">Toolkit · Software, methods and people</div><h2 data-i="k_h">A practical <em>toolkit</em>.</h2><p data-i="k_p">Tools and methods from my CV, grouped by how I use them.</p></div>
+  <div class="skills" id="skillGrid"></div>
+</div></section>
+
+<div class="wrap">
+  <div class="contact" id="contact">
+    <div class="mono" data-i="ct_k">Open to engineering roles in Italy</div>
+    <h2 data-i="ct_h">Let's talk about your next <em>engineer</em>.</h2>
+    <p data-i="ct_p">I'm based in Forlì and eligible to work in Italy. Send me a message or give me a call.</p>
+    <div class="cta">
+      <a class="btn solid" href="mailto:akibnaveed@gmail.com?subject=Hello%20Aqib" data-i="ct_b1">Send a message ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/aqib-naveed" rel="noopener" data-i="ct_b2">Find me on LinkedIn ↗</a>
+      <button class="btn" type="button" data-copy="akibnaveed@gmail.com" data-i="ct_b3">Copy email ⧉</button>
+      <button class="btn" type="button" data-copy="+39 351 830 8124" data-i="ct_b4">Copy phone ⧉</button>
+    </div>
+    <div class="reach"><div><span data-i="r_m">Email</span><code>akibnaveed@gmail.com</code></div><div><span data-i="r_p">Phone</span><code>+39 351 830 8124</code></div></div>
+  </div>
+  <footer><span data-i="f1">Mechanical engineering × Maintenance × Sustainability</span><a href="#home" data-i="f2">Back to top ↑</a><span>© 2026 AQIB NAVEED KHAN</span></footer>
+</div>
+</main>
+
+<div class="overlay" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <div id="mArt"></div>
+    <div class="in">
+      <div class="top"><span class="mono" id="mMeta"></span><button class="icon-btn" id="mClose" type="button" aria-label="Close">✕</button></div>
+      <h2 id="mTitle"></h2><ul id="mList"></ul>
+      <div class="facts" id="mFacts"></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- CONTENT: every text has an English (en) and Italian (it) version ---------- */
+var IT = {
+  logo: "MECCANICA × MANUTENZIONE × SOSTENIBILITÀ",
+  n1: "Chi sono", n2: "Percorso", n3: "Progetti", n4: "Certificazioni", n5: "Competenze", cta0: "Contattami ↗",
+  eb1: "Ingegnere meccanico · Manutenzione · Energie rinnovabili · Sostenibilità",
+  eb2: "L'affidabilità si misura · 001 / ∞",
+  h1: "Macchine affidabili. Energia <em>pulita</em>. Progettazione migliore.",
+  lead: "Sono <b>Aqib Naveed Khan</b>, ingegnere meccanico con esperienza sul campo in <b>manutenzione e affidabilità</b>, <b>messa in servizio di impianti rinnovabili</b> e <b>coordinamento di squadre</b>. Ho studiato in <b>Pakistan, Turchia e Italia</b> e sto completando una laurea magistrale in <b>Mechanical Engineering for Sustainability</b> all'Università di Bologna, aggiungendo <b>progettazione CAD (SOLIDWORKS CSWP)</b>, <b>analisi dei dati</b> e <b>manutenzione predittiva</b> alla mia esperienza di cantiere.",
+  elig: "In regola per lavorare in Italia",
+  cta1: "Vedi i progetti ↗", cta2: "Vai all'esperienza ↗", conn: "Contatti /", mail: "Email ↗",
+  tag: "ESPERIENZA SUL CAMPO.<br>PENSIERO SOSTENIBILE.",
+  s1v: "58,3<sub>MW</sub>", s1l: "Potenza totale dell'impianto a motori che ho mantenuto: 11 motori Niigata da 5,3 MW ciascuno",
+  s2v: "2,4<sub>MW</sub>", s2l: "Impianto solare costruito e messo in servizio nei tempi di progetto",
+  s3v: "3<sub>anni</sub>", s3l: "Sul campo come ingegnere della manutenzione, dal 2022 al 2025",
+  s4v: "3<sub>paesi</sub>", s4l: "Ho studiato in Pakistan, Turchia e Italia",
+  a_k: "Chi sono · L'ingegnere dietro al lavoro",
+  a_h: "L'affidabilità non è fortuna. È una <em>routine</em>.",
+  a_p1: "Lavoro tra manutenzione, energie rinnovabili e progettazione meccanica: mantenere affidabili i macchinari, mettere in servizio nuovi impianti e usare i dati per pianificare meglio gli interventi.",
+  a_p2: "Il mio percorso comprende la manutenzione di una centrale da 58,3 MW presso <b>Ibrahim Fibres Limited</b>, la messa in servizio di un <b>impianto solare da 2,4 MW</b> e una laurea magistrale in <b>Mechanical Engineering for Sustainability</b> all'<b>Università di Bologna</b>, dopo la laurea triennale in Pakistan e un anno di scambio in Turchia.",
+  a_p3: "Cerco un ruolo in Italia in cui unire l'esperienza sul campo alla formazione che sto completando. Sono in regola per lavorare in Italia e sto migliorando attivamente il mio italiano.",
+  pl1: "Manutenzione impianti", pl2: "Messa in servizio", pl3: "Manutenzione predittiva", a_btn: "Scopri il mio percorso ↗",
+  pc_role: "Ingegnere meccanico", pc_b: "Sede", pc_s: "Studi", pc_sv: "Laurea magistrale, Università di Bologna",
+  pc_w: "Lavoro", pc_wv: "In regola per lavorare in Italia", pc_l: "Lingue", pc_lv: "Inglese (IELTS 8.0) · Italiano (A2)",
+  j_k: "Il percorso · Pakistan, Turchia, Italia", j_h: "Prima la pratica. Poi la <em>sostenibilità</em>.",
+  j_p: "Esperienza sul campo, competenze certificate e una laurea magistrale in Mechanical Engineering for Sustainability.",
+  tb_edu: "Formazione", tb_exp: "Esperienza",
+  p_k: "Archivio lavori · Clicca su un progetto", p_h: "Progetti realizzati <em>in cantiere</em>.",
+  p_p: "Due progetti sul campo: un nuovo impianto solare e l'ammodernamento di motori.",
+  ctr_k: "Formazione · Pakistan, Turchia, Italia", ctr_h: "Formato in <em>tre</em> paesi.",
+  ctr_p: "Una laurea triennale in Pakistan, un anno di scambio in Turchia e una magistrale in Italia mi hanno dato una solida base tecnica e l'abitudine ad adattarmi in fretta a nuovi contesti di studio e di lavoro.",
+  c_k: "Titoli · Certificazioni e lingue", c_h: "Certificato nella progettazione 3D. Operativo in <em>due</em> lingue.",
+  k_k: "Competenze · Software, metodi e persone", k_h: "Un <em>kit di strumenti</em> concreto.",
+  k_p: "Strumenti e metodi del mio CV, raggruppati per come li uso.",
+  ct_k: "Disponibile per ruoli ingegneristici in Italia", ct_h: "Parliamo del tuo prossimo <em>ingegnere</em>.",
+  ct_p: "Vivo a Forlì e sono in regola per lavorare in Italia. Scrivimi o chiamami.",
+  ct_b1: "Scrivimi ↗", ct_b2: "Trovami su LinkedIn ↗", ct_b3: "Copia email ⧉", ct_b4: "Copia numero ⧉", r_m: "Email", r_p: "Telefono",
+  f1: "Ingegneria meccanica × Manutenzione × Sostenibilità", f2: "Torna su ↑"
+};
+var DATA = {
+  edu: [
+    { when: { en: "Mar 2025 — Present", it: "Mar 2025 — Oggi" }, note: { en: "Italy", it: "Italia" },
+      title: { en: "MSc in Mechanical Engineering for Sustainability", it: "Laurea Magistrale in Mechanical Engineering for Sustainability" },
+      org: { en: "University of Bologna", it: "Università di Bologna" }, badge: { en: "In progress", it: "In corso" },
+      grade: { en: "Grade 104/110", it: "Voto 104/110" },
+      text: { en: "Coursework: Mechanical Plants, Advanced and Sustainable Manufacturing, Condition Monitoring and Predictive Maintenance.", it: "Corsi: Impianti meccanici, Produzione avanzata e sostenibile, Monitoraggio delle condizioni e manutenzione predittiva." },
+      tags: { en: ["Mechanical Plants", "Sustainable Manufacturing", "Predictive Maintenance"], it: ["Impianti meccanici", "Produzione sostenibile", "Manutenzione predittiva"] } },
+    { when: { en: "Aug 2017 — Jan 2022", it: "Ago 2017 — Gen 2022" }, note: { en: "Pakistan", it: "Pakistan" },
+      title: { en: "BSc in Mechanical Engineering", it: "Laurea Triennale in Ingegneria Meccanica" },
+      org: { en: "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology (GIKI)", it: "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology (GIKI)" }, badge: null,
+      text: { en: "Coursework: Thermodynamics, CAD/CAM, Machine Design, Supply Chain Management.", it: "Corsi: Termodinamica, CAD/CAM, Progettazione di macchine, Gestione della supply chain." },
+      tags: { en: ["Thermodynamics", "CAD/CAM", "Machine Design"], it: ["Termodinamica", "CAD/CAM", "Progettazione di macchine"] } },
+    { when: { en: "Sep 2019 — May 2020", it: "Set 2019 — Mag 2020" }, note: { en: "Turkey", it: "Turchia" },
+      title: { en: "Exchange student", it: "Studente in scambio" },
+      org: { en: "Sakarya University", it: "Università di Sakarya" }, badge: null,
+      text: { en: "Coursework: Robotics, Project Management, Design of Machine Elements.", it: "Corsi: Robotica, Project management, Progettazione di elementi di macchine." },
+      tags: { en: ["Robotics", "Project Management"], it: ["Robotica", "Project management"] } }
+  ],
+  exp: [
+    { when: { en: "Feb 2022 — Feb 2025", it: "Feb 2022 — Feb 2025" }, note: { en: "Pakistan · 3 years", it: "Pakistan · 3 anni" },
+      title: { en: "Maintenance Engineer", it: "Ingegnere della manutenzione" },
+      org: { en: "Ibrahim Fibres Limited", it: "Ibrahim Fibres Limited" }, badge: null,
+      bullets: {
+        en: ["Inspected and maintained key assets of a 58.3 MW HFO power plant: 11 Niigata engines of 5.3 MW each, plus turbochargers, purifiers, compressors and cooling towers.",
+             "Ran the annual major overhaul of the engines to maintenance protocols, with minimum downtime.",
+             "Analysed equipment performance data and operating trends to spot deviations and likely mechanical problems early, supporting proactive maintenance.",
+             "Led a cross-functional team of 20 mechanics and 16 contract staff, and coordinated with internal stakeholders on plant maintenance and operation.",
+             "Applied safety protocols and regulations, and used inventory management software to track spares, forecast demand and keep parts available for timely repairs."],
+        it: ["Ispezione e manutenzione dei principali asset di una centrale HFO da 58,3 MW: 11 motori Niigata da 5,3 MW ciascuno, oltre a turbocompressori, depuratori, compressori e torri di raffreddamento.",
+             "Gestione della revisione generale annuale dei motori nel rispetto dei protocolli di manutenzione, con fermi macchina ridotti al minimo.",
+             "Analisi dei dati di prestazione e delle tendenze operative per individuare tempestivamente scostamenti e possibili problemi meccanici, a supporto della manutenzione proattiva.",
+             "Coordinamento di un team interfunzionale di 20 meccanici e 16 addetti a contratto, in raccordo con gli stakeholder interni per manutenzione ed esercizio dell'impianto.",
+             "Applicazione di protocolli e normative di sicurezza; uso di software di gestione delle scorte per monitorare i ricambi, prevedere la domanda e garantirne la disponibilità."] },
+      tags: { en: ["Niigata engines", "Overhauls", "Team leadership"], it: ["Motori Niigata", "Revisioni", "Coordinamento team"] } }
+  ],
+  projects: [
+    { kind: "solar", c: { en: "Solar", it: "Solare" },
+      t: { en: "Erection and Commissioning of a 2.4 MW Solar Power Plant", it: "Costruzione e messa in servizio di un impianto solare da 2,4 MW" },
+      d: { en: "Led the erection and commissioning of a state-of-the-art plant within the project deadline.", it: "Direzione della costruzione e della messa in servizio di un impianto all'avanguardia nei tempi di progetto." },
+      list: {
+        en: ["Led the erection and commissioning of a state-of-the-art 2.4 MW solar power plant within the project deadline.",
+             "Oversaw the mechanical aspects: structural integrity, design parameters and compliance with standards.",
+             "Managed civil, electrical and mechanical contract staff through site preparation, foundations, cable laying and structure installation for the panels and associated equipment.",
+             "Analysed plant performance and drew up a maintenance plan: cleaning schedule, structure inspection and string monitoring to maximise efficiency."],
+        it: ["Direzione della costruzione e della messa in servizio di un impianto solare all'avanguardia da 2,4 MW nei tempi di progetto.",
+             "Supervisione degli aspetti meccanici: integrità strutturale, parametri di progetto e conformità alle norme.",
+             "Coordinamento del personale a contratto civile, elettrico e meccanico per preparazione del sito, fondazioni, posa cavi e installazione delle strutture per pannelli e apparecchiature associate.",
+             "Analisi delle prestazioni dell'impianto e definizione di un piano di manutenzione: programma di pulizia, ispezione delle strutture e monitoraggio delle stringhe per massimizzare l'efficienza."] },
+      facts: { en: [["2.4 MW", "Rated capacity"], ["On time", "Project deadline met"], ["3", "Disciplines: civil, electrical, mechanical"]],
+               it: [["2,4 MW", "Potenza nominale"], ["Nei tempi", "Scadenza di progetto rispettata"], ["3", "Discipline: civile, elettrica, meccanica"]] } },
+    { kind: "engine", c: { en: "Engines", it: "Motori" },
+      t: { en: "Upgradation of Niigata Engines", it: "Ammodernamento dei motori Niigata" },
+      d: { en: "Upgraded four engines with a Japanese engineering team.", it: "Ammodernamento di quattro motori con un team di ingegneri giapponesi." },
+      list: {
+        en: ["Worked with a Japanese engineering team to upgrade four Niigata engines.",
+             "The upgrade included advanced lube oil filtration systems, OST governors, control pistons and digital instrument panels, to meet operational requirements.",
+             "Used the engine downtime to replace the suction header of the cooling towers before it could be damaged."],
+        it: ["Collaborazione con un team di ingegneri giapponesi per l'ammodernamento di quattro motori Niigata.",
+             "L'intervento ha previsto filtri avanzati per l'olio lubrificante, regolatori OST, pistoni di controllo e pannelli strumentali digitali, per soddisfare i requisiti operativi.",
+             "Sfruttamento del fermo dei motori per sostituire il collettore di aspirazione delle torri di raffreddamento ed evitarne il danneggiamento."] },
+      facts: { en: [["4", "Engines upgraded"], ["Japan", "Engineering partner team"], ["Downtime", "Used for cooling tower work"]],
+               it: [["4", "Motori ammodernati"], ["Giappone", "Team di ingegneri partner"], ["Fermo", "Sfruttato per le torri di raffreddamento"]] } }
+  ],
+  countries: [
+    { k: { en: "Pakistan", it: "Pakistan" }, y: { en: "2017 — 2022", it: "2017 — 2022" },
+      t: { en: "BSc in Mechanical Engineering", it: "Laurea Triennale in Ingegneria Meccanica" }, s: { en: "GIKI", it: "GIKI" },
+      p: { en: "Thermodynamics, CAD/CAM, Machine Design and Supply Chain Management, followed by three years as a maintenance engineer.", it: "Termodinamica, CAD/CAM, Progettazione di macchine e Gestione della supply chain, seguiti da tre anni come ingegnere della manutenzione." },
+      g: { en: "Foundations", it: "Basi" } },
+    { k: { en: "Turkey", it: "Turchia" }, y: { en: "2019 — 2020", it: "2019 — 2020" },
+      t: { en: "Exchange year", it: "Anno di scambio" }, s: { en: "Sakarya University", it: "Università di Sakarya" },
+      p: { en: "Robotics, Project Management and Design of Machine Elements.", it: "Robotica, Project management e Progettazione di elementi di macchine." },
+      g: { en: "Exchange", it: "Scambio" } },
+    { k: { en: "Italy", it: "Italia" }, y: { en: "2025 — Present", it: "2025 — Oggi" },
+      t: { en: "MSc in Mechanical Engineering for Sustainability", it: "Laurea Magistrale in Mechanical Engineering for Sustainability" }, s: { en: "University of Bologna", it: "Università di Bologna" },
+      p: { en: "Mechanical Plants, Advanced and Sustainable Manufacturing, Condition Monitoring and Predictive Maintenance.", it: "Impianti meccanici, Produzione avanzata e sostenibile, Monitoraggio delle condizioni e manutenzione predittiva." },
+      g: { en: "Master's", it: "Laurea magistrale" } }
+  ],
+  awards: [
+    { i: "✳", y: "Dassault Systèmes", t: { en: "Certified SOLIDWORKS Professional (CSWP)", it: "Certified SOLIDWORKS Professional (CSWP)" },
+      p: { en: "Advanced proficiency in SOLIDWORKS Design for creating and evaluating 3D models.", it: "Competenze avanzate in SOLIDWORKS Design per creare e valutare modelli 3D." }, g: { en: "Certification", it: "Certificazione" } },
+    { i: "✦", y: "Dassault Systèmes", t: { en: "Certified SOLIDWORKS Design Associate (CSWA)", it: "Certified SOLIDWORKS Design Associate (CSWA)" },
+      p: { en: "Core proficiency in SOLIDWORKS Design for creating and evaluating 3D models.", it: "Competenze fondamentali in SOLIDWORKS Design per creare e valutare modelli 3D." }, g: { en: "Certification", it: "Certificazione" } },
+    { i: "◇", y: { en: "Language", it: "Lingua" }, t: { en: "English", it: "Inglese" },
+      p: { en: "Proficient. IELTS 8.0 out of 9.0.", it: "Livello avanzato. IELTS 8.0 su 9.0." }, g: "IELTS 8.0 / 9.0" },
+    { i: "◇", y: { en: "Language", it: "Lingua" }, t: { en: "Italian", it: "Italiano" },
+      p: { en: "A2, actively improving.", it: "Livello A2, in miglioramento attivo." }, g: "A2" }
+  ],
+  skills: [
+    { h: { en: "CAD & design", it: "CAD e progettazione" }, k: { en: "Software", it: "Software" }, tags: { en: ["SOLIDWORKS (CSWP)", "PTC Creo Parametric", "AutoCAD", "3D modelling"], it: ["SOLIDWORKS (CSWP)", "PTC Creo Parametric", "AutoCAD", "Modellazione 3D"] } },
+    { h: { en: "Analysis & code", it: "Analisi e codice" }, k: { en: "Software", it: "Software" }, tags: { en: ["MATLAB", "Python", "Microsoft Office", "Performance data analysis"], it: ["MATLAB", "Python", "Microsoft Office", "Analisi dei dati di prestazione"] } },
+    { h: { en: "Plant & maintenance", it: "Impianti e manutenzione" }, k: { en: "Methods", it: "Metodi" }, tags: { en: ["Engine overhauls", "Condition monitoring", "Predictive maintenance", "Spares planning"], it: ["Revisione motori", "Monitoraggio delle condizioni", "Manutenzione predittiva", "Pianificazione ricambi"] } },
+    { h: { en: "Site & leadership", it: "Cantiere e leadership" }, k: { en: "People", it: "Persone" }, tags: { en: ["Team leadership", "Contractor coordination", "Safety protocols", "Commissioning"], it: ["Coordinamento team", "Coordinamento appaltatori", "Protocolli di sicurezza", "Messa in servizio"] } }
+  ]
+};
+/* ------------------------------------------------------------------------------------------ */
+
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+var lang = "en", tab = "edu", openIdx = -1;
+var EN = {};
+document.querySelectorAll("[data-i]").forEach(function (el) { EN[el.getAttribute("data-i")] = el.innerHTML; });
+var L = function (o) { return o && o.en !== undefined ? o[lang] : o; };
+var pills = function (a) { return a && a.length ? '<div class="pills">' + a.map(function (x) { return '<span class="pill">' + esc(x) + "</span>"; }).join("") + "</div>" : ""; };
+var num = function (x) { return lang === "it" ? String(x).replace(".", ",") : String(x); };
+
+function art(kind) {
+  var s = '<svg class="art" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="160" fill="var(--bg2)"/>';
+  var i, r, c;
+  if (kind === "solar") {
+    s += '<circle cx="268" cy="38" r="15" fill="var(--accent)"/>';
+    for (i = 0; i < 8; i++) s += '<line x1="268" y1="38" x2="' + (268 + Math.cos(i * .785) * 30) + '" y2="' + (38 + Math.sin(i * .785) * 30) + '" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/>';
+    for (r = 0; r < 3; r++) for (c = 0; c < 5; c++) {
+      var x = 34 + c * 50 + r * 16, y = 62 + r * 30;
+      s += '<polygon points="' + x + "," + y + " " + (x + 44) + "," + y + " " + (x + 30) + "," + (y + 24) + " " + (x - 14) + "," + (y + 24) + '" fill="color-mix(in srgb, var(--cool) 22%, var(--bg2))" stroke="var(--cool)" stroke-width="1"/>';
+    }
+  } else {
+    s += '<g transform="translate(110 82)"><circle r="40" fill="none" stroke="var(--accent)" stroke-width="2"/><circle r="16" fill="none" stroke="var(--accent)" stroke-width="2"/>';
+    for (i = 0; i < 12; i++) s += '<rect x="-6" y="-56" width="12" height="16" fill="var(--accent)" transform="rotate(' + (i * 30) + ')"/>';
+    s += '</g><g transform="translate(212 62)"><circle r="24" fill="none" stroke="var(--cool)" stroke-width="2"/><circle r="9" fill="none" stroke="var(--cool)" stroke-width="2"/>';
+    for (i = 0; i < 8; i++) s += '<rect x="-5" y="-35" width="10" height="11" fill="var(--cool)" transform="rotate(' + (i * 45 + 20) + ')"/>';
+    s += "</g>";
+  }
+  return s + "</svg>";
+}
+
+function renderTimeline() {
+  var list = DATA[tab];
+  $("#timeline").innerHTML = list.map(function (e) {
+    var body = e.bullets ? "<ul>" + L(e.bullets).map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "<p>" + esc(L(e.text)) + "</p>";
+    return '<article class="entry"><div class="when">' + esc(L(e.when)) + "<small>" + esc(L(e.note)) + "</small></div><div><h3>" + esc(L(e.title)) +
+      (e.badge ? '<span class="badge">' + esc(L(e.badge)) + "</span>" : "") + '</h3><div class="org">' + esc(L(e.org)) + "</div>" + body + (e.grade ? '<span class="grade">' + esc(L(e.grade)) + "</span>" : "") + pills(L(e.tags)) + "</div></article>";
+  }).join("");
+}
+function renderProjects() {
+  $("#grid").innerHTML = DATA.projects.map(function (p, i) {
+    return '<button class="card" type="button" data-i2="' + i + '">' + art(p.kind) + '<div class="body"><div class="meta mono"><span>' + esc(L(p.c)) + '</span></div><h3>' + esc(L(p.t)) + "</h3><p>" + esc(L(p.d)) + '</p><span class="open">' + (lang === "it" ? "Apri il progetto ↗" : "Open project ↗") + "</span></div></button>";
+  }).join("");
+}
+function renderRoute() {
+  $("#route").innerHTML = DATA.countries.map(function (c) {
+    return '<article class="stop"><span class="dot"></span><div class="country">' + esc(L(c.k)) + '</div><div class="mono">' + esc(L(c.y)) + "</div><h3>" + esc(L(c.t)) + '</h3><div class="sch">' + esc(L(c.s)) + "</div><p>" + esc(L(c.p)) + '</p><span class="tag">' + esc(L(c.g)) + "</span></article>";
+  }).join("");
+}
+function renderAwards() {
+  $("#awardGrid").innerHTML = DATA.awards.map(function (a) {
+    return '<div class="award"><div class="y"><span>' + a.i + "</span><span>" + esc(L(a.y)) + "</span></div><h3>" + esc(L(a.t)) + "</h3><p>" + esc(L(a.p)) + '</p><span class="tag">' + esc(L(a.g)) + "</span></div>";
+  }).join("");
+}
+function renderSkills() {
+  $("#skillGrid").innerHTML = DATA.skills.map(function (s) {
+    return '<div><div class="mono">' + esc(L(s.k)) + "</div><h3>" + esc(L(s.h)) + "</h3>" + pills(L(s.tags)) + "</div>";
+  }).join("");
+}
+function renderModal() {
+  if (openIdx < 0) return;
+  var p = DATA.projects[openIdx];
+  $("#mArt").innerHTML = art(p.kind);
+  $("#mMeta").textContent = L(p.c);
+  $("#mTitle").textContent = L(p.t);
+  $("#mList").innerHTML = L(p.list).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
+  $("#mFacts").innerHTML = L(p.facts).map(function (f) { return "<div><b>" + esc(f[0]) + '</b><span class="mono">' + esc(f[1]) + "</span></div>"; }).join("");
+}
+function applyLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(function (el) {
+    var k = el.getAttribute("data-i"), v = l === "it" && IT[k] !== undefined ? IT[k] : EN[k];
+    el.innerHTML = v;
+  });
+  document.querySelectorAll(".langsw button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"); });
+  $("#n-edu").textContent = String(DATA.edu.length).padStart(2, "0");
+  $("#n-exp").textContent = String(DATA.exp.length).padStart(2, "0");
+  renderTimeline(); renderProjects(); renderRoute(); renderAwards(); renderSkills(); renderModal();
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+
+/* theme */
+(function () {
+  var root = document.documentElement;
+  try { var s = localStorage.getItem("theme"); if (s) root.setAttribute("data-theme", s); } catch (e) {}
+  $("#theme").addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+})();
+
+/* events */
+document.querySelectorAll(".langsw button").forEach(function (b) { b.addEventListener("click", function () { applyLang(b.dataset.lang); }); });
+document.querySelectorAll(".tab").forEach(function (b) {
+  b.addEventListener("click", function () {
+    tab = b.dataset.tab;
+    document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+    renderTimeline();
+  });
+});
+var modal = $("#modal"), lastFocus = null;
+$("#grid").addEventListener("click", function (e) {
+  var c = e.target.closest(".card"); if (!c) return;
+  openIdx = +c.dataset.i2; lastFocus = document.activeElement; renderModal(); modal.hidden = false; $("#mClose").focus();
+});
+function closeModal() { modal.hidden = true; openIdx = -1; if (lastFocus) lastFocus.focus(); }
+$("#mClose").addEventListener("click", closeModal);
+modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+
+var toast = $("#toast"), tt;
+function say(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1800); }
+document.querySelectorAll("[data-copy]").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var v = b.getAttribute("data-copy");
+    var fallback = function () {
+      var els = document.querySelectorAll(".reach code"), el = null;
+      els.forEach(function (x) { if (x.textContent === v) el = x; });
+      if (el) { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      say(lang === "it" ? "Selezionato. Premi copia." : "Selected. Press copy.");
+    };
+    try { navigator.clipboard.writeText(v).then(function () { say(lang === "it" ? "Copiato" : "Copied"); }, fallback); } catch (e) { fallback(); }
+  });
+});
+
+/* hero network canvas */
+(function () {
+  var cv = $("#net"), ctx = cv.getContext("2d"), pts = [], mx = -999, my = -999, W = 0, H = 0;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function css(n, f) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || f; }
+  function size() {
+    var r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    var n = Math.round(Math.min(70, W * H / 14000)); pts = [];
+    for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var col = css("--accent", "#ffb454"), i, j, a, b, d;
+    for (i = 0; i < pts.length; i++) {
+      a = pts[i];
+      if (!reduce) { a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
+      for (j = i + 1; j < pts.length; j++) {
+        b = pts[j]; d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 120) { ctx.globalAlpha = (1 - d / 120) * .35; ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+      }
+      d = Math.hypot(a.x - mx, a.y - my);
+      if (d < 160) { ctx.globalAlpha = (1 - d / 160) * .8; ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
+      ctx.globalAlpha = .8; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(a.x, a.y, 1.8, 0, 6.3); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  addEventListener("pointermove", function (e) { var r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  addEventListener("resize", function () { size(); if (reduce) draw(); });
+  size(); draw();
+})();
+
+/* start: saved choice, else the browser language */
+(function () {
+  var l = "en";
+  try { l = localStorage.getItem("lang") || ""; } catch (e) {}
+  if (l !== "it" && l !== "en") l = (navigator.language || "").toLowerCase().indexOf("it") === 0 ? "it" : "en";
+  applyLang(l);
+})();
+</script>
+</body>
+</html>
